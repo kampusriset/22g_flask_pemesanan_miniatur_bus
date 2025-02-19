@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Edit Pesanan</h2>
+    <form method="POST" action="{{ url_for('edit_pesanan', id=pesanan.id) }}">
+        <div class="mb-3">
+            <label for="nama_pemesan" class="form-label">Nama Pemesan</label>
+            <input type="text" class="form-control" id="nama_pemesan" name="nama_pemesan" value="{{ pesanan.nama_pemesan }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="jenis_bus" class="form-label">Jenis Bus</label>
+            <input type="text" class="form-control" id="jenis_bus" name="jenis_bus" value="{{ pesanan.jenis_bus }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="jumlah_pesanan" class="form-label">Jumlah Pesanan</label>
+            <input type="number" class="form-control" id="jumlah_pesanan" name="jumlah_pesanan" value="{{ pesanan.jumlah_pesanan }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
+            <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon" value="{{ pesanan.nomor_telepon }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="alamat" class="form-label">Alamat</label>
+            <textarea class="form-control" id="alamat" name="alamat" rows="3" required>{{ pesanan.alamat }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Yakin mau save?')">Simpan</button>
+    </form>
+</div>
+{% endblock %}
