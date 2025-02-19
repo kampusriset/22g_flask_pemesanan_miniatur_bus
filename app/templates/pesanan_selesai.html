@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Pesanan Selesai</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Pesanan</th>
+                <th>Nama Pemesan</th>
+                <th>Jenis Bus</th>
+                <th>Jumlah Pesanan</th>
+                <th>Nomor Telepon</th>
+                <th>Alamat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pesanan in pesanan_selesai %}
+            <tr>
+                <td>{{ pesanan.id }}</td>
+                <td>{{ pesanan.nama_pemesan }}</td>
+                <td>{{ pesanan.jenis_bus }}</td>
+                <td>{{ pesanan.jumlah_pesanan }}</td>
+                <td>{{ pesanan.nomor_telepon }}</td>
+                <td>{{ pesanan.alamat }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
