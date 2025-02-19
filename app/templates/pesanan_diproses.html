@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Pesanan Diproses</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Pesanan</th>
+                <th>Nama Pemesan</th>
+                <th>Jenis Bus</th>
+                <th>Jumlah Pesanan</th>
+                <th>Nomor Telepon</th>
+                <th>Alamat</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pesanan in pesanan_diproses %}
+            <tr>
+                <td>{{ pesanan.id }}</td>
+                <td>{{ pesanan.nama_pemesan }}</td>
+                <td>{{ pesanan.jenis_bus }}</td>
+                <td>{{ pesanan.jumlah_pesanan }}</td>
+                <td>{{ pesanan.nomor_telepon }}</td>
+                <td>{{ pesanan.alamat }}</td>
+                <td>
+                    <a href="{{ url_for('edit_pesanan', id=pesanan.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ url_for('hapus_pesanan', id=pesanan.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau hapus?')">Delete</a>
+                    <a href="{{ url_for('selesai_pesanan', id=pesanan.id) }}" class="btn btn-success btn-sm">Selesai</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
