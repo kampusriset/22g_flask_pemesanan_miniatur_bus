@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+    function confirmDelete(id) {
+        if (confirm("Yakin mau hapus pesanan ini?")) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    }
+    
+    function confirmSelesai(id) {
+        if (confirm("Pindahkan pesanan ini ke Selesai?")) {
+            document.getElementById('selesai-form-' + id).submit();
+        }
+    }
+    </script>
+<div class="container">
+    <h2 class="my-4">Dashboard</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <h3>Pesanan Diproses</h3>
+        <a href="{{ url_for('tambah_pesanan') }}" class="btn btn-success">Tambah Pesanan</a>
+    </div>
+    
+    {% if pesanan_diproses %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Pesanan</th>
+                <th>Nama Pemesan</th>
+                <th>Jenis Bus</th>
+                <th>Jumlah Pesanan</th>
+                <th>Nomor Telepon</th>
+                <th>Alamat</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pesanan in pesanan_diproses %}
+            <tr>
+                <td>{{ pesanan.id }}</td>
+                <td>{{ pesanan.nama_pemesan }}</td>
+                <td>{{ pesanan.jenis_bus }}</td>
+                <td>{{ pesanan.jumlah_pesanan }}</td>
+                <td>{{ pesanan.nomor_telepon }}</td>
+                <td>{{ pesanan.alamat }}</td>
+                <td>
+                    <a href="{{ url_for('edit_pesanan', id=pesanan.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    
+                    <!-- Form untuk Delete -->
+                    <form id="delete-form-{{ pesanan.id }}" action="{{ url_for('hapus_pesanan', id=pesanan.id) }}" method="POST" style="display:inline;">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ pesanan.id }}')">Delete</button>
+                    </form>
+        
+                    <!-- Form untuk Selesai -->
+                    <form id="selesai-form-{{ pesanan.id }}" action="{{ url_for('selesai_pesanan', id=pesanan.id) }}" method="POST" style="display:inline;">
+                        <button type="button" class="btn btn-success btn-sm" onclick="confirmSelesai('{{ pesanan.id }}')">Selesai</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-muted">Tidak ada pesanan yang sedang diproses.</p>
+    {% endif %}
+    
+    <h3 class="my-4">Pesanan Selesai</h3>
+    {% if pesanan_selesai %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Pesanan</th>
+                <th>Nama Pemesan</th>
+                <th>Jenis Bus</th>
+                <th>Jumlah Pesanan</th>
+                <th>Nomor Telepon</th>
+                <th>Alamat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pesanan in pesanan_selesai %}
+            <tr>
+                <td>{{ pesanan.id }}</td>
+                <td>{{ pesanan.nama_pemesan }}</td>
+                <td>{{ pesanan.jenis_bus }}</td>
+                <td>{{ pesanan.jumlah_pesanan }}</td>
+                <td>{{ pesanan.nomor_telepon }}</td>
+                <td>{{ pesanan.alamat }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-muted">Tidak ada pesanan yang telah selesai.</p>
+    {% endif %}
+</div>
+{% endblock %}
