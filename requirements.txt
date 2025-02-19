@@ -1,0 +1,2 @@
+Flask==2.3.2
+Flask-MySQLdb==1.0.1
