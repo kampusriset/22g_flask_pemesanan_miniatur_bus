@@ -7,7 +7,7 @@ Aplikasi ini berisi demo pemesanan sebuah miniatur bis yang dapat menginput data
 
 ## Flowchrart
   Berikut ini adalah flowchart nya
-![Flowchart] (https://github.com/kampusriset/22g_flask_pemesanan_miniatur_bus/blob/main/screenshoots/flowchart%20pemesanan%20miniatur%20bus.jpg)
+![Flowchart](https://github.com/kampusriset/22g_flask_pemesanan_miniatur_bus/blob/main/screenshoots/flowchart%20pemesanan%20miniatur%20bus.jpg)
 
 
 
@@ -17,4 +17,4 @@ Aplikasi ini berisi demo pemesanan sebuah miniatur bis yang dapat menginput data
 -Dzaki Satriatama  
 
 ## Link Dokumentasi
-[Klik di sini] (https://youtu.be/otMnUMM-Eyk?si=qIucH6PJIeGXt54Z)
+[Klik di sini](https://youtu.be/otMnUMM-Eyk?si=qIucH6PJIeGXt54Z)
